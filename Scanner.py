@@ -20,10 +20,11 @@ def port_checker(socket_ip, start_port, end_port):
 
         count_millis = int(round(time.time() * 1000)) - start_ms_counter  # Ping counter end
 
-        ends = (end_port - i) / ((count_millis/1000) * 60)  # Time's left counter
-
+        ends = ((end_port - i) * (count_millis/1000)) / 60  # Time's left counter
+        
         # Output
-        print(socket_ip + ", port", str(i), status + ", ping:", str(count_millis), end='')
+        output = socket_ip + ", port " + str(i) + " " + status + ", ping: " + str(count_millis)
+        print(output, end='')
         print('\tTime\'s left:', int(ends / 60), 'Hours', int(ends % 60), 'Minutes')
 
 
